@@ -1,5 +1,7 @@
+spring:
+  config.activate.on-profile: microservice
 server:
-  port: 7070
+  port: 7071
 spring:
   application:
     name: microservice
