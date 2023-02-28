@@ -1,0 +1,72 @@
+server:
+  port: 7070
+spring:
+  application:
+    name: microservice
+  config:
+    import: optional:configserver:http://localhost:8888
+  profiles:
+    active: microservice
+  datasource:
+    url: jdbc:postgresql://localhost:7711/ocr-db
+    username: postgres
+    password: password
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      properties:
+        allow.auto.create.topics: false
+  cloud:
+    config:
+      uri: http://localhost:8800
+      profile: microservice
+#      name: microservice
+      label: main
+#      import-check:
+#        enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+org:
+  springframework:
+    web:
+      filter:
+        CommonsRequestLoggingFilter: DEBUG
+
+ocr:
+  topics:
+    id-card-request: khmer-id-card-request
+    id-card-result: khmer-id-card-result
+    passport-request: passport-request
+    passport-result: passport-result
+  consumer-group: ocr-group
+  provider: TSC
+  api:
+    url: https://ocr-sbx.camdigikey.gov.kh
+    path:
+      passport: /api/ocr/crnn_att_single_passport
+      id-card: /api/ocr/crnn_att_single
+
+schema-registry-url: http://localhost:8077
+
+minio-configuration:
+  host: http://localhost:7900
+  bucket-name: ocr
+  access-key: BNh92Uib2yJDCu2E
+  secret-key: QSkYALfhu55A9UtISaAYRNyuSz8cuxBS
+
+minio-test:
+  id-card-img-path: id_card.png
+  passport-img-path: passport.png
