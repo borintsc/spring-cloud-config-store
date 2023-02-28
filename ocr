@@ -3,12 +3,6 @@ spring:
 server:
   port: 7071
 spring:
-  application:
-    name: microservice
-  config:
-    import: optional:configserver:http://localhost:8888
-  profiles:
-    active: microservice
   datasource:
     url: jdbc:postgresql://localhost:7711/ocr-db
     username: postgres
