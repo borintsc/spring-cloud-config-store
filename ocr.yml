@@ -1,8 +1,7 @@
-spring:
-  config.activate.on-profile: dev
 server:
   port: 7071
 spring:
+  config.activate.on-profile: dev
   datasource:
     url: jdbc:postgresql://localhost:7711/ocr-db
     username: postgres
