@@ -3,4 +3,4 @@ spring:
 server:
   port: 9990
 db:
-  port:7000
+  port: 7000
