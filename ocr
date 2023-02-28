@@ -1,5 +1,5 @@
 spring:
-  config.activate.on-profile: microservice
+  config.activate.on-profile: dev
 server:
   port: 7071
 spring:
