@@ -2,5 +2,5 @@ spring:
   config.activate.on-profile: microservice
 server:
   port: 9990
-microservice:
+db:
   port:7000
